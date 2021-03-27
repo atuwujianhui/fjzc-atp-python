@@ -1,0 +1,26 @@
+# 作者:吴剑辉
+# 时间:2021-03-13
+
+# 配置符号说明。
+# 1、“[页面]”：表示系统页面，自动化主要以页面做为组织方式，而不是流程；
+# 2、“::”：切分元素定位方式，左侧表示“BY”（暂时翻译为定位方式），右侧表示“VALUE”（暂时翻译为定位值） ，即“web driver find_elements”的参数。#3、“(数字) ”，表示元素数组下标，默认为0。封装的功能里面定位的都是“ELEMENTS”，所以需要使用下表获取目标元素，如果不设置下标“(数字) ”，则默认为0，即取第1个元素；
+# 4、“&&”：切分“IFRAME”， 左边为“IFRAME”定位方式，右侧为元素定位方式（可能包括下一层“IFRAME”）；
+# 5、“>>”：表示元素定位的层级关系，主要是解决上级可以明确定位（一般是ID或者Name），下级直接定位不清晰或者多变的情况（一般是Class、Tag等）。注意:下级元素不要重复配置“IFRAME”；
+# （注意：尽量不用“XPATH”方式定位，尤其是那中从头开始定位的方式，如“/html/body/form/div/input”，页面稍微一调整，配置就得修改，健壮性不够。不过不同浏览器对“XPATH”的取值不一样，可自行研究。）
+# 登录页（中英文均支持，建议使用英文）
+LOGIN:
+  # 登录弹框链接
+  login_link: id::js-signin-btn
+  # 邮箱
+  email: name::email(0)
+  #密码
+  password: name::password
+  # login_button: class::login_bt>>tag:a(0)
+  login_button: xpath:://*[@id="signup-form"]/div[5]/input
+
+# 首页
+HOME_PAGE:
+  #首页左上角的图标。
+  logo: id::logo(0)
+  # 待办任务刷新按钮，隐藏在“id”为“info frame”的“IFRAME”下。
+  todo_renew: id::infoFrame&&id::btn-new(0).

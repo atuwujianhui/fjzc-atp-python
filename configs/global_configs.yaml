@@ -1,0 +1,4 @@
+# 系统全局配置
+system:
+  # 页面元素加载等待超时时间
+  find_element_timeout_default: 5

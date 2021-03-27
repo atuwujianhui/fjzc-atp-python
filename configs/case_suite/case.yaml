@@ -1,0 +1,21 @@
+# 作者：吴剑辉(福建中测)
+# 时间：2021-03-19
+# 功能：用例执行顺序编排
+# 模块根目录：cases.businesses
+# 模块名：文件名去掉后缀“.py”
+# 子目录：用“.”分割#必须配置三级：
+# 第一级：模块；
+# 第二级：类；
+# 第三级：方法。
+
+# 测试模块，方法按照配置顺序执行
+business_case:
+  # 测试用例(类-方法)，按顺序配置文件的顺序执行 
+  BusinessCase:
+    - ddt:test_business_case
+    
+test_case:
+  TestCase:
+    - ddt:test_hello_2
+    - hello_3
+    - hello_1
